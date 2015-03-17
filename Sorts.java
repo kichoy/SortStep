@@ -41,7 +41,20 @@ public class Sorts
 
 	public void insertionSort(int[] list)
 	{
-		//your code here
+		for (int outer = 1; outer < list.length; outer++)
+		{
+			int position = outer;
+			int key = list[position];
+			
+			// Shift larger values to the right
+			while (position > 0 && 
+				list[position - 1] > key)
+			{
+				list[position] = list[position - 1];
+				position--;
+			}
+			list[position] = key;
+		}
 	}
 
 	private void merge(int[] a, int first, int mid, int last)

@@ -1,10 +1,11 @@
-private int numInts = 100;
+private int numInts = 8000;
 private int largestInt = 100;
 private int [] myArray= new int[numInts];
 private Stopwatch watch = new Stopwatch();
 private Sorts mySorts = new Sorts();
 public void setup()
 {
+	System.out.println("numInts: "+numInts);
 	bubbleSortTest();
 	selectionSortTest();
 	insertionSortTest();
@@ -12,16 +13,6 @@ public void setup()
 }
 public void draw(){
 	//empty!
-}
-public void selectionSortTest()
-{
-	System.out.println("Testing Selection Sort");
-	fillArray(numInts, largestInt);
-	watch.reset();
-	watch.start();
-	mySorts.selectionSort(myArray);
-	watch.stop();
-	System.out.println("Selection Sort took " +watch.elapsedTime()/1000 + " microseconds");
 }
 public void bubbleSortTest()
 {
@@ -32,6 +23,16 @@ public void bubbleSortTest()
 	mySorts.bubbleSort(myArray);
 	watch.stop();
 	System.out.println("Bubble Sort took " +watch.elapsedTime()/1000 + " microseconds");
+}
+public void selectionSortTest()
+{
+	System.out.println("Testing Selection Sort");
+	fillArray(numInts, largestInt);
+	watch.reset();
+	watch.start();
+	mySorts.selectionSort(myArray);
+	watch.stop();
+	System.out.println("Selection Sort took " +watch.elapsedTime()/1000 + " microseconds");
 }
 public void insertionSortTest()
 {
