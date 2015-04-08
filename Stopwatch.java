@@ -23,4 +23,3 @@ public class Stopwatch {
 		stop = 0;
 	}
 }
-

@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class SortStep extends PApplet {
 
-private int numInts = 8000;
+private int numInts = 10;
 private int largestInt = 100;
 private int [] myArray= new int[numInts];
 private Stopwatch watch = new Stopwatch();
@@ -27,18 +27,9 @@ public void setup()
 	insertionSortTest();
 	mergeSortTest();
 }
-public void draw(){
-	//empty!
-}
-public void bubbleSortTest()
-{
-	System.out.println("Testing Bubble Sort");
-	fillArray(numInts, largestInt);
-	watch.reset();
-	watch.start();
-	mySorts.bubbleSort(myArray);
-	watch.stop();
-	System.out.println("Bubble Sort took " +watch.elapsedTime()/1000 + " microseconds");
+public void draw()
+{ 
+	// empty
 }
 public void selectionSortTest()
 {
@@ -47,8 +38,28 @@ public void selectionSortTest()
 	watch.reset();
 	watch.start();
 	mySorts.selectionSort(myArray);
+	if(isSorted() == false)
+	{
+		System.out.println("Sort not working");
+		return;
+	}
 	watch.stop();
 	System.out.println("Selection Sort took " +watch.elapsedTime()/1000 + " microseconds");
+}
+public void bubbleSortTest()
+{
+	System.out.println("Testing Bubble Sort");
+	fillArray(numInts, largestInt);
+	watch.reset();
+	watch.start();
+	mySorts.bubbleSort(myArray);
+	if(isSorted() == false)
+	{
+		System.out.println("Sort not working");
+		return;
+	}
+	watch.stop();
+	System.out.println("Bubble Sort took " +watch.elapsedTime()/1000 + " microseconds");
 }
 public void insertionSortTest()
 {
@@ -57,6 +68,11 @@ public void insertionSortTest()
 	watch.reset();
 	watch.start();
 	mySorts.insertionSort(myArray);
+	if(isSorted() == false)
+	{
+		System.out.println("Sort not working");
+		return;
+	}
 	watch.stop();
 	System.out.println("Insertion Sort took " +watch.elapsedTime()/1000 + " microseconds");
 }
@@ -66,18 +82,29 @@ public void mergeSortTest()
 	fillArray(numInts, largestInt);
 	watch.reset();
 	watch.start();
-	mySorts.mergeSort(myArray,0,myArray.length-1);
+	mySorts.mergeSort(myArray, 0, myArray.length-1);
+	if(isSorted() == false)
+	{
+		System.out.println("Sort not working");
+		return;
+	}
 	watch.stop();
 	System.out.println("Merge Sort took " +watch.elapsedTime()/1000 + " microseconds");
 }
 private void fillArray(int numInts, int largestInt)
 {
-	for (int loop = 0; loop < myArray.length; loop++)
+	for (int i = 0; i < myArray.length; i++)
 	{
-	myArray[loop] = (int)(Math.random()*largestInt + 1);
+		myArray[i] = (int)(Math.random()*largestInt + 1);
 	}
 }
-
+private boolean isSorted()
+{
+	for(int i = 0; i < myArray.length-1; i++)
+		if(myArray[i] > myArray[i+1])
+			return false;
+		return true;
+	}
   static public void main(String[] passedArgs) {
     String[] appletArgs = new String[] { "SortStep" };
     if (passedArgs != null) {
