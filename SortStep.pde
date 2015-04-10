@@ -1,4 +1,4 @@
-private int numInts = 10;
+private int numInts = 8000;
 private int largestInt = 100;
 private int [] myArray= new int[numInts];
 private Stopwatch watch = new Stopwatch();

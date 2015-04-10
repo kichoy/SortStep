@@ -87,7 +87,7 @@ public class Sorts
 		}
 
 		// copy merged section of array
-		for (int i = first; i <= last; i++)
+		for (int i = first; i <= last; i++) //fixed problem: i must go upto last
 		{
 			a[i] = mergedArray[i];
 		}
@@ -98,7 +98,7 @@ public class Sorts
 	public void mergeSort(int[] a, int first, int last)
 	{
 		int mid = (first+last)/2;
-		if (last-first > 0) 
+		if (last-first > 0) //only when first !<= 0
 		{
 			mergeSort(a, first, mid);
 			mergeSort(a, mid+1, last);
